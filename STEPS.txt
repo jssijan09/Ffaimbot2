@@ -1,0 +1,148 @@
+════════════════════════════════════════════════
+FF AIMBOT — iPhone Only Install
+Mac lagbena | GitHub Free Build | ESign Install
+════════════════════════════════════════════════
+
+TOTAL TIME: ~10 minutes
+
+════════════════════════════════════════════════
+PART 1 — GitHub e upload (5 min)
+════════════════════════════════════════════════
+
+Step 1:
+  github.com e jao → Sign up (free)
+  Email diye account banao
+
+Step 2:
+  Login → "New repository" click
+  Name: FFAimbot
+  Public select koro
+  Create repository
+
+Step 3:
+  "uploading an existing file" link tap koro
+  Ei ZIP er sob files drag kore upload koro
+  (folder structure maintain korte hobe)
+
+  Upload order:
+  • .github/workflows/build.yml
+  • FFAimbot.xcodeproj/project.pbxproj
+  • FFAimbot/AppDelegate.mm
+  • FFAimbot/ViewController.mm
+  • FFAimbot/MemoryEngine.mm
+  • FFAimbot/AimbotEngine.mm
+  • FFAimbot/ProcessFinder.mm
+  • FFAimbot/Info.plist
+
+Step 4:
+  "Commit changes" button press koro
+  → Automatic build start hobe!
+
+════════════════════════════════════════════════
+PART 2 — IPA Download (2 min)
+════════════════════════════════════════════════
+
+Step 5:
+  Repository page e "Actions" tab click koro
+
+Step 6:
+  "Build FF Aimbot IPA" workflow dekhbe
+  Green checkmark = build complete
+  (5-10 minute lagbe first time)
+
+Step 7:
+  Click on the workflow run
+  Niche "Artifacts" section e
+  "FFAimbot-IPA" download koro
+
+Step 8:
+  ZIP extract koro
+  → FFAimbot_unsigned.ipa pabe
+
+════════════════════════════════════════════════
+PART 3 — ESign diye iPhone e Install (3 min)
+════════════════════════════════════════════════
+
+Step 9 — ESign install (jodi already na thake):
+  iPhone Safari → esign.yyyue.com
+  Install tap → Settings → Trust
+
+Step 10 — IPA import:
+  FFAimbot_unsigned.ipa ta iPhone e transfer koro
+  (AirDrop / Google Drive / iCloud)
+
+Step 11 — Sign koro:
+  ESign open → "+" → Import IPA
+  FFAimbot_unsigned.ipa select
+  Long press → "Sign"
+
+Step 12 — Certificate:
+  ESign Settings → Apple ID → Add
+  Jekono Apple ID + password daw
+  Free 7-day certificate generate hobe
+
+Step 13 — Install:
+  Signed IPA → Install tap
+  Settings → General → VPN & Device Management
+  → Tomar Apple ID → Trust
+
+Step 14 — Done!
+  FF Aimbot app home screen e asbe
+  Free Fire open → FF Aimbot open
+  INJECT AIMBOT tap → khelo!
+
+════════════════════════════════════════════════
+CERTIFICATE 7 DIN PORE EXPIRE HOLE:
+════════════════════════════════════════════════
+
+  ESign e again sign koro same IPA diye
+  Same Apple ID → new 7-day cert
+  2 minute er kaj
+
+  PERMANENT OPTION:
+  TrollStore (iOS 14-16.6.1) install thakle
+  → TrollStore diye install = never expires
+
+════════════════════════════════════════════════
+BUILD FAIL HOLE:
+════════════════════════════════════════════════
+
+  GitHub Actions → Red X dekhle:
+  → Click koro error dekhte
+  → Common fix: header files missing
+
+  Missing header solve:
+  FFAimbot folder e ei .h files add koro:
+
+  MemoryEngine.h — content:
+  @interface MemoryEngine : NSObject
+  + (BOOL)attachToProcess:(pid_t)pid;
+  + (void)detach;
+  + (uintptr_t)getBaseAddress;
+  + (float)readFloat:(uintptr_t)addr;
+  + (uint64_t)readUInt64:(uintptr_t)addr;
+  + (uint32_t)readUInt32:(uintptr_t)addr;
+  + (BOOL)writeFloat:(uintptr_t)addr value:(float)v;
+  @end
+
+  AimbotEngine.h — content:
+  @interface AimbotEngine : NSObject
+  + (void)startWithPID:(pid_t)pid;
+  + (void)stop;
+  + (void)setAimbot:(BOOL)on;
+  + (void)setHeadshot:(BOOL)on;
+  + (void)setNoRecoil:(BOOL)on;
+  + (void)setESP:(BOOL)on;
+  + (void)setSmooth:(float)val;
+  @end
+
+  ProcessFinder.h — content:
+  @interface ProcessFinder : NSObject
+  + (pid_t)findFreeFire;
+  @end
+
+  ViewController.h — content:
+  @interface ViewController : UIViewController
+  @end
+
+════════════════════════════════════════════════
